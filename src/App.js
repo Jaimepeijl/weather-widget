@@ -1,24 +1,43 @@
-import logo from './logo.svg';
 import './App.css';
+import {useEffect, useState} from "react";
+import axios from "axios";
+import SearchBar from "./components/SearchBar/SearchBar";
 
 function App() {
+    const [location, setLocation] = useState('')
+    const [weatherData, setWeatherData] = useState({})
+
+    useEffect(() => {
+        async function fetchData (){
+            try {
+                const result = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${process.env.REACT_APP_API_KEY}`)
+                console.log(result.data)
+                setWeatherData(result.data)
+            } catch (e) {
+                console.error(e)
+            }
+        }
+        if (location) {
+            fetchData()
+        }}, [location])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <>
+      <div className="weather-container">
+          <SearchBar locationHandler={setLocation}/>
+        <div  className="weather-header">
+          <span className="location-details">
+            {Object.keys(weatherData).length > 0 &&
+            <>
+                <h2>{weatherData.weather[0].description}</h2>
+                <h3>{weatherData.name}</h3>
+                <h1>{weatherData.main.temp}</h1>
+            </>}
+          </span>
+          <span className="weather-content"></span>
+        </div>
+      </div>
+      </>
   );
 }
 
