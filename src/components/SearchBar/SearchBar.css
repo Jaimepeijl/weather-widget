@@ -7,13 +7,12 @@
     border: none;
     padding: 8px 16px;
     width: 70%;
-    outline: none;
 }
 .searchbar button {
     border-radius: 0 2px 2px 0;
     border: none;
-    background-color: blue;
+    background-color: #F58220;
     color: white;
     cursor: pointer;
-    /*outline: none;*/
+    outline: none;
 }

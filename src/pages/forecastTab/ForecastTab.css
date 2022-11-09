@@ -1,0 +1,22 @@
+.forecast-day {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    margin: 10px 20px 0 20px
+}
+.forecast-day{
+    text-transform: capitalize;
+}
+
+.forecast-weather {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: right;
+}
+
+.forecast-weather .weather-description {
+    font-size: 12px;
+    color: #43A4BD;
+}

@@ -1,0 +1,15 @@
+.times {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 12px;
+    font-size: 10px;
+}
+
+.chart {
+    display: flex;
+    justify-content: space-evenly;
+    background-color: white;
+    padding: 12px;
+    border-bottom: 1px solid #C6BCB3;
+
+}
