@@ -2,6 +2,7 @@ import './App.css';
 import {useEffect, useState} from "react";
 import axios from "axios";
 import SearchBar from "./components/SearchBar/SearchBar";
+import kelvinToCelcius from "./helpers/kelvinToCelcius";
 
 function App() {
     const [location, setLocation] = useState('')
@@ -10,7 +11,7 @@ function App() {
     useEffect(() => {
         async function fetchData (){
             try {
-                const result = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${process.env.REACT_APP_API_KEY}`)
+                const result = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${process.env.REACT_APP_API_KEY}&lang=nl`)
                 console.log(result.data)
                 setWeatherData(result.data)
             } catch (e) {
@@ -31,7 +32,7 @@ function App() {
             <>
                 <h2>{weatherData.weather[0].description}</h2>
                 <h3>{weatherData.name}</h3>
-                <h1>{weatherData.main.temp}</h1>
+                <h1>{kelvinToCelcius(weatherData.main.temp)}° C</h1>
             </>}
           </span>
           <span className="weather-content"></span>
