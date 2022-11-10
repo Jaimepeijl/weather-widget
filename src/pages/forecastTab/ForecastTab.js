@@ -29,6 +29,7 @@ function ForecastTab({coord}) {
 
     return (
         <div className="tab-wrapper">
+            <div className="forecast-container">
             {loading &&
                 <span>
                     Aan het laden ...
@@ -59,6 +60,7 @@ function ForecastTab({coord}) {
                     </article>
                 )
             })}
+            </div>
         </div>
     );
 }

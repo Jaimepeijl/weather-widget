@@ -11,8 +11,8 @@
 .searchbar button {
     border-radius: 0 2px 2px 0;
     border: none;
+    padding: 8px;
     background-color: #F58220;
     color: white;
     cursor: pointer;
-    outline: none;
 }

@@ -36,6 +36,7 @@ function TodayTab ({coord}) {
 
 return(
     <div className="tab-wrapper">
+        <div className="forecast-container">
         {error && <span> Oeps, er ging iets mis!</span>}
         {forecasts.length === 0 && !error && !loading &&
             <span className="no-forecast">
@@ -58,7 +59,7 @@ return(
         })
         }
     </div>
-
+        </div>
     </div>
 )}
 export default TodayTab
