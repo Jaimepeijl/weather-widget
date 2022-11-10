@@ -30,7 +30,7 @@ body{
   width: 400px;
   background-color: white;
   border-radius: 2px;
-  box-shadow: .25rem .5rem 1rem 0 rgba(0, 0, 0, 0.1);
+  box-shadow: .25rem .5rem 1rem 0 rgba(0, 0, 0, 0.2);
 }
 
 .weather-header {

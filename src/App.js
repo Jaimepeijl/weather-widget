@@ -12,8 +12,8 @@ function App() {
     const [location, setLocation] = useState('')
     const [weatherData, setWeatherData] = useState({})
     const [error, setError] =  useState(false)
-    const [type, setType] = useState('wind')
-    const [image, toggleImage] = useState('wind')
+    const [type, setType] = useState('default')
+    const [image, toggleImage] = useState('default')
 
     useEffect(() => {
         async function fetchData (){
@@ -44,7 +44,6 @@ function App() {
       <div className="weather-container">
         <div className="weather-header" style={{backgroundImage: `url(/img/${image}.jpeg`}}>
             <SearchBar locationHandler={setLocation}/>
-
           <div className="location-details">
               {error && <h3>
             Oeps! Deze locatie bestaat helemaal niet!
@@ -52,7 +51,7 @@ function App() {
               {Object.keys(weatherData).length <= 0 && !error &&
                   <><h2>Welkom!</h2>
               <h3>Voer hierboven een stad in om de weer gegevens te zien</h3></>}
-            {Object.keys(weatherData).length > 0 &&
+            {Object.keys(weatherData).length > 0 && !error &&
             <div className="capitalize">
                 <h3>{weatherData.name}</h3>
                 <h2>{weatherData.weather[0].description}</h2>
@@ -64,13 +63,13 @@ function App() {
               <TabBarMenu/>
               <div className="tab-wrapper">
                   <Routes>
-              < Route exact path="/"
+                    <Route exact path="/"
                       element={<TodayTab coord={weatherData.coord}/>}
-              />
-              <Route path="/komende-week"
-                     element={<ForecastTab coord={weatherData.coord}/>}
-              />
-            </Routes>
+                    />
+                    <Route path="/komende-week"
+                      element={<ForecastTab coord={weatherData.coord}/>}
+                    />
+                  </Routes>
               </div>
           </span>
       </div>

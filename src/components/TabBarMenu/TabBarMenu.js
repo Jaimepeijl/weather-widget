@@ -8,14 +8,14 @@ function TabBarMenu() {
             <ul>
                 <li>
                     <NavLink
-                        activeClassName="active-link"
+                        className="active-link"
                         exact to="/">
                         Vandaag
                     </NavLink>
                 </li>
                 <li>
                     <NavLink
-                        activeClassName="active-link"
+                        className="active-link"
                              exact to="/komende-week">
                         Komende week
                     </NavLink>

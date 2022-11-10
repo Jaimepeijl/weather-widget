@@ -15,7 +15,6 @@ function ForecastTab({coord}) {
             try{
                 const results = await axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${coord.lat}&lon=${coord.lon}&exclude=minutely,current,hourly&appid=${process.env.REACT_APP_API_KEY}&units=metric&lang=nl`)
                 setForecasts(results.data.daily.slice(1, 6))
-                console.log(forecasts)
             } catch (e) {
                 console.error(e)
                 setError(true)
@@ -31,7 +30,7 @@ function ForecastTab({coord}) {
         <div className="tab-wrapper">
             <div className="forecast-container">
             {loading &&
-                <span>
+                <span className="no-forecast">
                     Aan het laden ...
                 </span>}
             {forecasts.length === 0 && !error && !loading &&

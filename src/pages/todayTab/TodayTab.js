@@ -14,7 +14,6 @@ function TodayTab ({coord}) {
             toggleLoading(true)
             try{
                 const results = await axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${coord.lat}&lon=${coord.lon}&exclude=minutely,current,daily&appid=${process.env.REACT_APP_API_KEY}&lang=nl&units=metric`)
-                console.log(results.data)
                 setForecasts([
                     results.data.hourly[3],
                     results.data.hourly[5],
@@ -37,12 +36,12 @@ function TodayTab ({coord}) {
 return(
     <div className="tab-wrapper">
         <div className="forecast-container">
-        {error && <span> Oeps, er ging iets mis!</span>}
+        {error && <span className="no-forecast"> Oeps, er ging iets mis!</span>}
         {forecasts.length === 0 && !error && !loading &&
             <span className="no-forecast">
               Zoek eerst een locatie om het weer te bekijken
           </span>}
-        {loading && <span>Aan het laden ... </span>}
+        {loading && <span className="no-forecast">Aan het laden ... </span>}
         <div className="times">
             {forecasts.map((forecast) => {
                 return <span key={`${forecast.dt}-timestamp`}>{createTimeString(forecast.dt)}</span>

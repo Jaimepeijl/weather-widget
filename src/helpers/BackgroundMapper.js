@@ -15,7 +15,8 @@ function BackgroundMapper (type){
         case 'Haze':
         case 'Smoke':
         case 'Fog':
+            return('cloudy')
         default:
-            return('wind')
+            return ('default')
 }}
 export default BackgroundMapper;
